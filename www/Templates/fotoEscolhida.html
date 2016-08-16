@@ -1,0 +1,85 @@
+<ion-view>
+<ion-nav-title>Picture Choice</ion-nav-title>
+<ion-nav-bar class="bar bar-positive">
+
+       <ion-nav-back-button> </ion-nav-back-button>
+
+       </ion-nav-bar> 
+<ion-content scroll="">
+
+
+<div class="card">
+   
+    <div class="item item-divider">Alguma Alteração?</div>
+      {{fotoEscolhida.nome}}
+
+<div ng-repeat="item in fotoEscolhida.listaPalavras">
+          
+    <div class="item item-text-wrap">
+ 
+       <label class="item item-input">
+            <span class="input-label">{{item.label}}</span>
+            <input type="text" ng-model="item.valor"/>
+       </label>
+
+    </div>
+</div>
+
+
+<ul class="list">
+<li class="item item-toggle">
+     Adicionar mais palavras?
+     <label class="toggle toggle-positive">
+       <input type="checkbox" ng-model="isMarcado"
+       ng-click="mudou(isMarcado)">
+       <div class="track">
+         <div class="handle"></div>
+         <!--<div class="toggle-text">{{customText ? "YES" : "NO"}}</div>-->
+       </div>
+     </label>
+
+  </li>
+
+  
+</ul>
+
+
+
+<div ng-if="isMarcado">
+
+
+<div class="list list-inset">
+  <label class="item item-input">
+    <input type="text" placeholder="Nome:" ng-model="data.nome" >
+  </label>
+  <label class="item item-input">
+    <input type="text" placeholder="Palavra:" ng-model="data.palavra">
+  </label>
+</div>
+
+  <div class="col col-33 col-offset-67">
+<button ng-model="button" style="float: left;" ng-click="adicionar()" class="button button-small button-positive" >Adicionar</button>
+</div>
+</div>
+
+</div>
+
+
+
+      
+
+</ion-content>
+
+ <ion-footer-bar class="bar-stable">
+       <div class="tabs tabs-icon-left">
+          <a class="tab-item"   href="#/main">
+          <i class="icon ion-home" item-left  ></i>
+          Home
+        </a>
+          <a class="tab-item" href="#/listagem">
+        <i class="icon ion-images" item-right></i>
+        Galeria
+        </a>
+        </div>
+  </ion-footer-bar> 
+</ion-view>
