@@ -4,19 +4,19 @@
 
        <ion-nav-back-button> </ion-nav-back-button>
 
-       </ion-nav-bar> 
+       </ion-nav-bar>
 <ion-content scroll="">
 
 
 <div class="card">
-   
+
     <div class="item item-divider">Alguma Alteração?</div>
       {{fotoEscolhida.nome}}
 
 <div ng-repeat="item in fotoEscolhida.listaPalavras">
-          
+
     <div class="item item-text-wrap">
- 
+
        <label class="item item-input">
             <span class="input-label">{{item.label}}</span>
             <input type="text" ng-model="item.valor"/>
@@ -40,7 +40,7 @@
 
   </li>
 
-  
+
 </ul>
 
 
@@ -58,15 +58,15 @@
 </div>
 
   <div class="col col-33 col-offset-67">
-<button ng-model="button" style="float: left;" ng-click="adicionar()" class="button button-small button-positive" >Adicionar</button>
+<button ng-model="button" style="float: left; margin-bottom:10px" ng-click="adicionar()" class="button button-small button-positive" >Adicionar</button>
 </div>
 </div>
 
 </div>
 
+ 
 
 
-      
 
 </ion-content>
 
@@ -81,5 +81,5 @@
         Galeria
         </a>
         </div>
-  </ion-footer-bar> 
+  </ion-footer-bar>
 </ion-view>

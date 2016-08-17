@@ -3,21 +3,16 @@
 <ion-content>
 
 
+<ion-scroll zooming="true" direction="y">
+
 
 <div class="card">
-<!--<ion-scroll zooming="true" direction="y"> -->
+
   <div ng-controller="MainController" class="container">
 
-    
+
     <div>
 
-        <div class="row">
-          <img style="width:auto; height:50px; margin-left : 10px" src="img/logo.png"/>
-        </div>
-
-       <div class="titulo" style="margin-top : 35px">
-          <div><span>Imagens</span><i ng-if="fotos.length != 0" class="ion-minus-circled" ng-click="habilitaDeleteImagem()" data-pack="default" data-tags="-"></i></div>
-      </div>
 
 <ion-list show-delete="shouldShowDeleteImage">
       <ion-item ng-repeat="item in fotos">
@@ -61,13 +56,13 @@
     </div>
       <div class="item item-button-right">
         <div class="col-md-4">
-            
+
           <button ng-model="button" style="float: right;" ng-click="enviar()" class="button button-small button-positive">Salvar</button>
 
 
         </div>
 
-      
+
 
     </div>
 
@@ -75,17 +70,19 @@
 
 
 
-      
+
   </div>
-<!--</ion-scroll>-->
+
 </div>
 
+
+</ion-scroll>
 </ion-content>
- <ion-footer-bar class="bar-stable">
-      
+
+
        <!--<h1 class="title"> Jababronx, Q1 </h1>-->
-        <div class="tabs tabs-icon-left">
-          <a class="tab-item"   href="#/main">
+        <div class="tabs tabs-icon-left" style="background-color: #0c60ee;">
+          <a  style="color : white;" class="tab-item"   href="#/main" >
           <i class="icon ion-home" item-left  ></i>
           Home
         </a>
@@ -97,5 +94,5 @@
 
 
 
-      </ion-footer-bar>
+
 </ion-view>
