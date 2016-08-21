@@ -1,12 +1,17 @@
 <ion-view>
 <ion-nav-title>Pic2You</ion-nav-title>
+
+
 <ion-content>
-
-
 <ion-scroll zooming="true" direction="y">
 
 
-<div class="card">
+
+
+<div class="teste"   style="color:white">
+
+
+
 
   <div ng-controller="MainController" class="container">
 
@@ -14,20 +19,21 @@
     <div>
 
 
-<ion-list show-delete="shouldShowDeleteImage">
+<ion-list can-swipe="true">
       <ion-item ng-repeat="item in fotos">
         <div class="row">
           <div align="middle">
             <img ng-src="{{item.src}}" style="width: 300px; height : auto">
           </div>
-          <ion-delete-button class="ion-minus-circled"
-               ng-click="fotos.splice($index, 1)">
-          </ion-delete-button>
+          <ion-option-button class="button-positive"
+                             ng-click="fotos.splice($index, 1)">
+            Delete
+          </ion-option-button>
         </div>
       </ion-item>
       <ion-item>
         <div style="text-align: center;">
-          <img ng-src="img/camera.png" ng-click="takePicture()" style="max-width : 50px; width: auto; height : auto"/>
+          <img ng-src="img/foto1.png" ng-click="takePicture()" style="max-width : 50px; width: auto; height : auto"/>
         </div>
       </ion-item>
     </ion-list>
@@ -35,34 +41,37 @@
 
       <div style="margin-top : 20px">
         <div class="titulo">
-            <div><span>Palavras Chaves</span><i class="ion-plus-circled" ng-click="adicionaLinha()" data-pack="default" data-tags="+"></i><i class="ion-minus-circled" ng-click="habilitaDelete()" data-pack="default" data-tags="-"></i></div>
+            <div><span>Palavras Chaves</span><i class="ion-plus-circled" ng-click="adicionaLinha()" data-pack="default" data-tags="+"></i>
+              <i class="ion-minus-circled" ng-click="habilitaDelete()" data-pack="default" data-tags="-"></i></div>
         </div>
 
-      <ion-list show-delete="shouldShowDelete">
+      <ion-list can-swipe="true" show-delete="shouldShowDelete">
         <ion-item ng-repeat="item in vizualiza">
           <div class="row">
             <div class="col-md-8">
-              <input type="text" placeholder="Nome{{$index+1}}" class="form-control" ng-change="search()" ng-model='item.valor'>
+              <input type="text" placeholder="Nome{{$index+1}}" class="form-control" ng-change="search()" ng-model='item.nome'>
             </div>
             <div class="col-md-8">
               <input type="text" placeholder="Palavra{{$index+1}}" class="form-control" ng-change="search()" ng-model='item.valor'>
             </div>
-              <ion-delete-button class="ion-minus-circled"
-                   ng-click="vizualiza.splice($index, 1)">
-              </ion-delete-button>
+            <ion-option-button class="button-positive"
+                               ng-click="vizualiza.splice($index, 1)">
+              Delete
+            </ion-option-button>
+
           </div>
         </ion-item>
       </ion-list>
-    </div>
-      <div class="item item-button-right">
+
+      <div class="row item item-button-right">
         <div class="col-md-4">
 
-          <button ng-model="button" style="float: right;" ng-click="enviar()" class="button button-small button-positive">Salvar</button>
+          <button ng-model="button" ng-click="enviar($index)" class="button button-small button-positive">Salvar</button>
 
 
         </div>
 
-
+      </div>
 
     </div>
 
@@ -76,21 +85,28 @@
 </div>
 
 
+
+
+
 </ion-scroll>
+
 </ion-content>
 
 
+ <ion-footer-bar class="bar-stable">
+
        <!--<h1 class="title"> Jababronx, Q1 </h1>-->
-        <div class="tabs tabs-icon-left" style="background-color: #0c60ee;">
-          <a  style="color : white;" class="tab-item"   href="#/main" >
-          <i class="icon ion-home" item-left  ></i>
-          Home
-        </a>
-          <a class="tab-item" href="#/listagem">
-        <i class="icon ion-images" item-right></i>
-        Galeria
-        </a>
-        </div>
+       <div class="row tabs tabs-icon-left" style="background-color: #0c60ee;">
+         <a  style="color : white;" class="tab-item"   href="#/main" >
+         <i class="icon ion-home" item-left  ></i>
+         Home
+       </a>
+         <a  style="color : white;" class="tab-item" href="#/listagem">
+       <i class="icon ion-images" item-right></i>
+       Galeria
+       </a>
+       </div>
+</ion-footer-bar>
 
 
 

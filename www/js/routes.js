@@ -2,9 +2,9 @@ angular.module('starter')
 .config(function($stateProvider,$urlRouterProvider){
 
 
- //$urlRouterProvider.otherwise('listagem'); 
+ //$urlRouterProvider.otherwise('listagem');
 
-$urlRouterProvider.otherwise('main'); 
+$urlRouterProvider.otherwise('main');
 
 $stateProvider
 
@@ -16,7 +16,7 @@ $stateProvider
 
 
 
-.state('scroll=""', {
+.state('fotoEscolhida', {
 	url:'/fotoEscolhida',
 	templateUrl : 'Templates/fotoEscolhida.html',
 	controller : 'FotoController'

@@ -1,48 +1,58 @@
 angular.module('starter')
-.controller('ListagemController',function($scope, $location, $rootScope){
+.controller('ListagemController',function($scope, $location, $rootScope, Scopes){
 
-$scope.shouldShowDelete = false;
+ Scopes.store('ListagemController', $scope);
+
+
+ $scope.shouldShowDelete = false;
  $scope.shouldShowReorder = false;
  $scope.listCanSwipe = true
- 
-	$scope.listaDeFotos=
-	[
-		{"nome" : "Carla" , "listaPalavras" :[{"valor":"111111", "label" : "Cpf"}, {"valor":"27852056800", "label" : "RG"}]},
-		{"nome" : "Foto2" , "listaPalavras" :[{"valor":"111111", "label" : "Cpf"}, {"valor":"27852056800", "label" : "RG"}]}
-	];
+ $scope.addNew = false;
 
 
-	$scope.mudaRota = function(index){
-     $rootScope.fotoEscolhida= $scope.listaDeFotos[index];
-     $location.path("/fotoEscolhida");
+$scope.adicionaLinha = function() {
+    $scope.vizualizaFotos.unshift({valor : ''});
+}
 
-     };
+ $scope.voltaListagem = function() {
+
+    console.log('bidonmegale')
+    Scopes.get('MainController').fotos = [];
+    Scopes.get('MainController').vizualiza = [{}];
+    console.log(Scopes.get('MainController'));
 
 
-});
 
-angular.module('starter').controller('FotoController', function($scope, $stateParams , $rootScope){
+    $location.path('/main')
 
-  	$scope.data={};
-	$scope.fotoEscolhida = $rootScope.fotoEscolhida;
-	
+ }
+
+
+
+}).controller('FotoController', function($scope, $stateParams , $rootScope){
+
+  $scope.data={};
+  $scope.fotoEscolhida= $rootScope.fotoEscolhida;
+
 	$scope.adicionar = function(){
 
       $scope.fotoEscolhida.listaPalavras.push({valor : $scope.data.nome, label: $scope.data.palavra})
       $scope.data.nome="";
-	  $scope.data.palavra="";
+	    $scope.data.palavra="";
      };
 
 });
 
 
 
-angular.module('starter').controller('MainController', ['$scope', '$q', '$ionicLoading', function($scope, $q, $ionicLoading) {
-
+angular.module('starter').controller('MainController', ['$scope', '$rootScope',  '$location' ,'$q', '$ionicLoading', 'Scopes', function($scope,  $rootScope , $location ,  $q, $ionicLoading, Scopes) {
+  Scopes.store('MainController', $scope);
   $scope.vizualiza = [{"valor" : ''}]
   $scope.fotos = [];
   $scope.shouldShowDelete = false;
   $scope.shouldShowDeleteImage = false;
+
+
 
    $scope.habilitaDeleteImagem = function(){
      $scope.shouldShowDeleteImage = !$scope.shouldShowDeleteImage;
@@ -72,17 +82,33 @@ angular.module('starter').controller('MainController', ['$scope', '$q', '$ionicL
      $scope.fotos.splice(valor, 1);
    }
 
-   $scope.enviar = function() {
-     $ionicLoading.show({
-        template: 'Relaxe, processando sua solicitação'
-     })
-       setTimeout(function(){
-          $ionicLoading.hide().then(function() {
-              $scope.vizualiza = [{"valor" : ''}]
-              $scope.fotos = [];
-          })
-       }, 3000);
+   $scope.enviar = function(index) {
 
+
+    var listagemScope = Scopes.get('ListagemController')
+
+    console.log($scope.vizualiza[0]);
+
+    if(!listagemScope.fotos)
+        listagemScope.fotos = [];
+
+    if(!listagemScope.vizualizaFotos)
+        listagemScope.vizualizaFotos = [];
+
+    for(var i = 0; i < $scope.vizualiza.length; i++) {
+      listagemScope.vizualizaFotos.push($scope.vizualiza[i]);
+    }
+
+    for(var i = 0; i < $scope.fotos.length; i++) {
+        listagemScope.fotos.push($scope.fotos[i]);
+    }
+
+
+
+
+    console.log("abacate auzl", listagemScope.vizualizaFotos)
+
+    $location.path("/listagem");
    }
 
    $scope.send = function() {
@@ -92,7 +118,7 @@ angular.module('starter').controller('MainController', ['$scope', '$q', '$ionicL
 
      setTimeout(function(){
         $ionicLoading.hide().then(function() {
-          
+
         })
      }, 3000);
    }
@@ -140,7 +166,26 @@ angular.module('starter').controller('MainController', ['$scope', '$q', '$ionicL
   }
 
   $scope.adicionaLinha = function() {
-      $scope.vizualiza.push({valor : ''});
+      $scope.vizualiza.unshift({valor : ''});
   };
 
 }]);
+
+
+
+angular.module('starter').factory('Scopes', function ($rootScope) {
+
+    var mem = {};
+
+    return {
+
+        store: function (key, value) {
+            console.log(key)
+            mem[key] = value;
+        },
+
+        get: function (key) {
+            return mem[key];
+        }
+    };
+});
