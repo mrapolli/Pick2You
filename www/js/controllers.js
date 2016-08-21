@@ -1,5 +1,5 @@
 angular.module('starter')
-.controller('ListagemController',function($scope, $location, $rootScope, Scopes){
+.controller('ListagemController',function($scope, $location, $rootScope, Scopes, FotoEscolhida){
 
  Scopes.store('ListagemController', $scope);
 
@@ -10,9 +10,13 @@ angular.module('starter')
  $scope.addNew = false;
 
 
-$scope.adicionaLinha = function() {
-    $scope.vizualizaFotos.unshift({valor : ''});
+
+$scope.enviarEscolhada = function(index) {
+
+    FotoEscolhida.store($scope.listaFotos[index]);
+    $location.path('/fotoEscolhida');
 }
+
 
  $scope.voltaListagem = function() {
 
@@ -29,17 +33,57 @@ $scope.adicionaLinha = function() {
 
 
 
-}).controller('FotoController', function($scope, $stateParams , $rootScope){
+}).controller('FotoUnicaController', function($scope, $stateParams, $location, $rootScope, Scopes, FotoEscolhida){
+
+  $scope.goHome = function() {
+
+    var viewport = document.querySelector("meta[name=viewport]");
+    viewport.setAttribute('content', "initial-scale=1, maximum-scale=4, minimum-scale=0.1, user-scalable=no, width=device-width");
+
+
+       $location.path('/main')
+  }
+
+  $scope.goGaleria = function() {
+
+    var viewport = document.querySelector("meta[name=viewport]");
+    viewport.setAttribute('content', "initial-scale=1, maximum-scale=4, minimum-scale=0.1, user-scalable=no, width=device-width");
+
+
+
+       $location.path('/listagem');
+  }
+
+
+    $scope.data = {};
+    $scope.data.foto = FotoEscolhida.get();
+
+
+}).controller('FotoController', function($scope, $stateParams, $location, $rootScope, Scopes, FotoEscolhida){
+
+$scope.adicionaLinha = function() {
+    $scope.vizualizaFotos.unshift({valor : ''});
+}
+
+
+ Scopes.store('FotoController', $scope, FotoEscolhida, $location);
+
+
+
+
+
+ $scope.goImagem = function(img) {
+
+    var viewport = document.querySelector("meta[name=viewport]");
+    viewport.setAttribute('content', "initial-scale=1, maximum-scale=4, minimum-scale=0.1, user-scalable=yes, width=device-width");
+
+     FotoEscolhida.store(img)
+     $location.path('/foto');
+ }
 
   $scope.data={};
-  $scope.fotoEscolhida= $rootScope.fotoEscolhida;
-
-	$scope.adicionar = function(){
-
-      $scope.fotoEscolhida.listaPalavras.push({valor : $scope.data.nome, label: $scope.data.palavra})
-      $scope.data.nome="";
-	    $scope.data.palavra="";
-     };
+  $scope.fotos= FotoEscolhida.get().fotos;
+  $scope.vizualizaFotos = FotoEscolhida.get().palavras;
 
 });
 
@@ -87,21 +131,11 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
 
     var listagemScope = Scopes.get('ListagemController')
 
-    console.log($scope.vizualiza[0]);
-
-    if(!listagemScope.fotos)
-        listagemScope.fotos = [];
-
-    if(!listagemScope.vizualizaFotos)
-        listagemScope.vizualizaFotos = [];
-
-    for(var i = 0; i < $scope.vizualiza.length; i++) {
-      listagemScope.vizualizaFotos.push($scope.vizualiza[i]);
+    if(!listagemScope.listaFotos) {
+      listagemScope.listaFotos = [];
     }
 
-    for(var i = 0; i < $scope.fotos.length; i++) {
-        listagemScope.fotos.push($scope.fotos[i]);
-    }
+    listagemScope.listaFotos.push({palavras : $scope.vizualiza, fotos : $scope.fotos});
 
 
 
@@ -186,6 +220,26 @@ angular.module('starter').factory('Scopes', function ($rootScope) {
 
         get: function (key) {
             return mem[key];
+        }
+    };
+});
+
+
+
+
+
+angular.module('starter').factory('FotoEscolhida', function ($rootScope) {
+
+    var mem = {};
+
+    return {
+
+        store: function (value) {
+            mem[0] = value;
+        },
+
+        get: function () {
+            return mem[0];
         }
     };
 });

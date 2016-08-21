@@ -28,4 +28,12 @@ $stateProvider
 	controler : 'MainController'
 })
 
+
+.state('foto',{
+	url:'/foto',
+	templateUrl : 'Templates/foto.html',
+	controler : 'FotoUnicaController'
+})
+
+
 });
