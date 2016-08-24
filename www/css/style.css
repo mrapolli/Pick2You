@@ -3,5 +3,27 @@
    font-size: 30px;
 }
 .teste {
-  background-color:#0c60ee;
+  background-color:#006600;
+}
+
+.corpo {
+  background-color:#eeffe6;
+}
+
+.scroll-content {
+background-color:#f2f2f2;
+
+}
+
+input{
+background-color:#eeffe6;
+}
+
+.item{
+
+background-color:inherit;
+}
+
+.item-content{
+  background-color:#eeffe6 !important;
 }

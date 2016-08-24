@@ -8,15 +8,15 @@
 
 
 
-<div class="teste"   style="color:white">
+<div class="corpo" style="color:white">
 
 
 
 
-  <div ng-controller="MainController" class="container">
+  <div  ng-controller="MainController" class="container">
 
 
-    <div>
+    <div >
 
 
 <ion-list can-swipe="true">
@@ -33,16 +33,17 @@
       </ion-item>
       <ion-item>
         <div style="text-align: center;">
-          <img ng-src="img/foto1.png" ng-click="takePicture()" style="max-width : 50px; width: auto; height : auto"/>
+          <img ng-src="img/fundo.png" ng-click="takePicture()" style="max-width : 80px; width: auto; height : auto"/>
         </div>
       </ion-item>
     </ion-list>
     </div>
 
-      <div style="margin-top : 20px">
-        <div class="titulo">
-            <div><span>Palavras Chaves</span><i class="ion-plus-circled" ng-click="adicionaLinha()" data-pack="default" data-tags="+"></i>
-              <i class="ion-minus-circled" ng-click="habilitaDelete()" data-pack="default" data-tags="-"></i></div>
+      <div>
+        <div class="row teste">
+            <div class="col"><span>Palavras Chaves</span></div>
+            <div style="float: right; margin-top:5px; margin-right:11px"><i style="font-size: 20px" class="ion-plus" ng-click="adicionaLinha()" data-pack="default" data-tags="+"></i>
+            </div>
         </div>
 
       <ion-list can-swipe="true" show-delete="shouldShowDelete">
@@ -63,15 +64,17 @@
         </ion-item>
       </ion-list>
 
-      <div class="row item item-button-right">
-        <div class="col-md-4">
-
-          <button ng-model="button" ng-click="enviar($index)" class="button button-small button-positive">Salvar</button>
-
-
+      <div class="teste">
+        <div style="float: right; margin-top:15px; margin-right:25px" >
+          <button style="background-color: #eeffe6; color:#006600; border-color: #006600;font-weight: bold;" ng-model="button" ng-click="enviar()" class="button button-small button-positive">&nbsp;&nbsp;&nbsp;Salvar&nbsp;&nbsp;&nbsp;</button>
         </div>
 
       </div>
+      <div style="height : 50px; background-color: #f2f2f2">
+
+      </div>
+
+
 
     </div>
 
@@ -90,23 +93,29 @@
 
 </ion-scroll>
 
+
+       <!--<h1 class="title"> Jababronx, Q1 </h1>-->
+
+
 </ion-content>
 
 
- <ion-footer-bar class="bar-stable">
+<div class="tabs tabs-icon-left" style="background-color: #f2f2f2;">
+  <a  style="color : #527a7a;" class="tab-item"   href="#/main" >
+  <i class="icon ion-home" item-left  ></i>
+  Home
+</a>
+<a  style="color : #527a7a;" class="tab-item" href="#/listagem">
+<i class="icon ion-images" item-right></i>
+Galeria
+</a>
 
-       <!--<h1 class="title"> Jababronx, Q1 </h1>-->
-       <div class="row tabs tabs-icon-left" style="background-color: #0c60ee;">
-         <a  style="color : white;" class="tab-item"   href="#/main" >
-         <i class="icon ion-home" item-left  ></i>
-         Home
-       </a>
-         <a  style="color : white;" class="tab-item" href="#/listagem">
-       <i class="icon ion-images" item-right></i>
-       Galeria
-       </a>
-       </div>
-</ion-footer-bar>
+</div>
+
+
+
+
+
 
 
 
