@@ -32,7 +32,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
   }
 
   $scope.enviar = function(index) {
-
+/*
     if($scope.fotos.length == 0) {
       var alertPopup = $ionicPopup.alert({
         title: 'Erro',
@@ -61,6 +61,8 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
       }
     }
 
+
+
     if(popup) {
       var alertPopup = $ionicPopup.alert({
         title: 'Erro',
@@ -70,7 +72,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
       return;
 
     }
-
+*/
     var listagemScope = Scopes.get('ListagemController')
 
     if(!listagemScope.listaFotos) {
@@ -101,7 +103,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
 
   $scope.takePicture = function(){
     var options = {
-      quality: 90,
+      quality: 50,
       correctOrientation : true,
       destinationType: Camera.DestinationType.DATA_URL,
       sourceType: Camera.PictureSourceType.CAMERA,
@@ -117,7 +119,8 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
       var imagem = new Image();
       imagem.src = "data:image/jpeg;base64," + imageData;
 
-      var c = document.getElementById('myCanvas');
+      //var c = document.getElementById('myCanvas');
+      var c = document.createElement('canvas');
       var ctx = c.getContext("2d");
 
      var imgWidth  = imagem.width;

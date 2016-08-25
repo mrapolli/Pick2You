@@ -28,7 +28,8 @@
             <div>
               <div class="row teste">
                 <div class="col" align="middle">
-                  <div><span>Palavras Chaves<i style="font-size: 20px; position: absolute; float: right; margin-top:5px;" class="ion-plus" ng-click="adicionaLinha()" data-pack="default" data-tags="+"></i></span></div>
+                  <div><span>Palavras Chaves</span></div>
+                  <i style="font-size: 20px; float: right; margin-right: 40px; margin-top:5px; z-index: 999" class="ion-plus" ng-click="adicionaLinha()" data-pack="default" data-tags="+"></i>
                 </div>
               </div>
 
@@ -48,10 +49,11 @@
                 </ion-item>
               </ion-list>
 
-              <div>
-                <div class="col-offset-75" style="float: right; margin-top:15px; margin-right:25px; background-color: #f2f2f2 !important;" >
-                  <button style="background-color: #eeffe6; color:#006600; border-color: #006600;font-weight: bold;" ng-model="button" ng-click="enviar()" class="button button-small button-positive">&nbsp;&nbsp;&nbsp;Salvar&nbsp;&nbsp;&nbsp;</button>
-                </div>
+
+              <div class="row" style="height : 50px; background-color: #f2f2f2; border-style: solid;">
+                  <div class="col-offset-75">
+                      <button style="background-color: #eeffe6; margin-top:10px; color:#006600; border-color: #006600;font-weight: bold;" ng-model="button" ng-click="enviar()" class="button button-small button-positive">&nbsp;&nbsp;&nbsp;Salvar&nbsp;&nbsp;&nbsp;</button>
+                  </div>
               </div>
 
               <div class="row" style="height : 50px; background-color: #f2f2f2; border-style: solid;">
@@ -65,9 +67,6 @@
             </div>
           </div>
         </div>
-
-
-        <canvas id="myCanvas"></canvas>
 
     </ion-content>
 
