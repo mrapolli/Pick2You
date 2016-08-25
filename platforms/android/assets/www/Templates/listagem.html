@@ -1,0 +1,34 @@
+<ion-view ng-controller="ListagemController">
+  <ion-nav-title>Pic2You   </ion-nav-title>
+
+  <ion-nav-bar class="bar bar-positive">
+  </ion-nav-bar>
+
+  <ion-content>
+    <ion-list can-swipe="true" can-swipe="true">
+      <ion-item ng-repeat="item in listaFotos" ng-click="enviarEscolhada($index)">
+        <div ng-repeat="foto in item.fotos">
+          <img ng-src="{{foto.src}}" style="width: 30px; height : auto">
+        </div>
+        <ion-option-button class="button-positive" ng-click="listaFotos.splice($index, 1)">
+          Delete
+        </ion-option-button>
+        Album {{$index+1}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+
+  <ion-footer-bar class="bar-stable">
+    <div class="tabs tabs-icon-left">
+      <a class="tab-item" ng-click="voltaListagem()">
+        <i class="icon ion-home" item-left  ></i>
+        Home
+      </a>
+      <a class="tab-item" href="#/listagem">
+        <i class="icon ion-images" item-right></i>
+        Galeria
+      </a>
+    </div>
+  </ion-footer-bar>
+</ion-view>
