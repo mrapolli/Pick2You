@@ -1,8 +1,6 @@
 <ion-view ng-controller="FotoController">
-  <ion-nav-title>Pic2You</ion-nav-title>
 
-  <ion-nav-bar class="bar bar-positive">
-  </ion-nav-bar>
+  <ion-nav-title><div align="middle">Pic2You</div></ion-nav-title>
 
   <ion-content>
     <ion-list>
@@ -35,13 +33,16 @@
         </ion-option-button>
       </ion-item>
 
-      <ion-item>
-        <div class="titulo">
-          <div><span>Palavras Chaves</span>
-            <i class="ion-plus-circled" ng-click="adicionaLinha()" data-pack="default" data-tags="+"></i>
+
+        <div class="row teste">
+          <div class="col" align="middle">
+            <span>Palavras Chaves</span>
+          </div>
+          <div style="float: right; margin-top:5px; margin-right:42px">
+            <i style="font-size: 20px" class="ion-plus" ng-click="adicionaLinha()" data-pack="default" data-tags="+"></i>
           </div>
         </div>
-      </ion-item>
+
 
       <ion-item ng-repeat="it in vizualizaFotos">
         <div class="row">
