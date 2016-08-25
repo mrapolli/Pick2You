@@ -22,9 +22,6 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
     return q.promise;
   }
 
-  $scope.habilitaDelete = function() {
-    $scope.shouldShowDelete = !$scope.shouldShowDelete;
-  }
 
   $scope.removeText = function(valor) {
     $scope.vizualiza.splice(valor, 1);
@@ -36,7 +33,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
 
   $scope.enviar = function(index) {
 
-  /*  if($scope.fotos.length == 0) {
+    if($scope.fotos.length == 0) {
       var alertPopup = $ionicPopup.alert({
         title: 'Erro',
         template: 'Tire uma foto Vacilonidus'
@@ -73,8 +70,6 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
       return;
 
     }
-
-    */
 
     var listagemScope = Scopes.get('ListagemController')
 
@@ -119,16 +114,54 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
 
     $scope.cordovaCamera(options).then(function(imageData) {
 
-      $scope.fotos.push({"src" : "data:image/jpeg;base64," + imageData})
       var imagem = new Image();
       imagem.src = "data:image/jpeg;base64," + imageData;
-      var physicalScreenWidth = window.screen.width * window.devicePixelRatio;
-      var physicalScreenHeight = window.screen.height * window.devicePixelRatio;
+
+      var c = document.getElementById('myCanvas');
+      var ctx = c.getContext("2d");
+
+     var imgWidth  = imagem.width;
+     var imgHeight = imagem.height;
+
+     c.width   = imgWidth;
+     c.height  = imgHeight;
+
+     ctx.width  = imgWidth;
+     ctx.height = imgHeight;
+
+
+     //add ionic alert aki para quer qual que é
+
+
+     imagem.setAttribute('crossOrigin', '');
+     ctx.drawImage(imagem, 0, 0, imgWidth, imgHeight);
+
+     ctx.putImageData($scope.contrastImage(ctx.getImageData(0, 0, imgWidth, imgHeight), 100), 0,0);
+     $scope.fotos.push({"src" : c.toDataURL()});
+
 
     }, function(err) {
       console.log(err);
     });
   }
+
+
+
+  $scope.contrastImage = function(imageData, contrast) {
+     var data = imageData.data;
+     var factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
+
+     for(var i=0;i<data.length;i+=4)
+     {
+         data[i] = factor * (data[i] - 128) + 128;
+         data[i+1] = factor * (data[i+1] - 128) + 128;
+         data[i+2] = factor * (data[i+2] - 128) + 128;
+     }
+     return imageData;
+   }
+
+
+
 
 
   $scope.adicionaLinha = function() {
