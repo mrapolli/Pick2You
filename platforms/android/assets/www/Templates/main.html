@@ -3,7 +3,6 @@
 
 
   <ion-content>
-    <ion-scroll zooming="true" direction="y">
         <div class="corpo" style="color:white">
           <div ng-controller="MainController" class="container">
             <div>
@@ -52,8 +51,8 @@
                 </ion-item>
               </ion-list>
 
-              <div class="">
-                <div class="col-offset-75" style="margin-top:15px; margin-right:25px; background-color: #f2f2f2 !important;" >
+              <div>
+                <div class="col-offset-75" style="float: right; margin-top:15px; margin-right:25px; background-color: #f2f2f2 !important;" >
                   <button style="background-color: #eeffe6; color:#006600; border-color: #006600;font-weight: bold;" ng-model="button" ng-click="enviar()" class="button button-small button-positive">&nbsp;&nbsp;&nbsp;Salvar&nbsp;&nbsp;&nbsp;</button>
                 </div>
               </div>
@@ -70,7 +69,7 @@
             </div>
           </div>
         </div>
-      </ion-scroll>
+
     </ion-content>
 
     <div class="tabs tabs-icon-left" style="background-color: #f2f2f2;">

@@ -36,7 +36,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
 
   $scope.enviar = function(index) {
 
-  /*  if($scope.fotos.length == 0) {
+    if($scope.fotos.length == 0) {
       var alertPopup = $ionicPopup.alert({
         title: 'Erro',
         template: 'Tire uma foto Vacilonidus'
@@ -74,7 +74,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
 
     }
 
-    */
+  
 
     var listagemScope = Scopes.get('ListagemController')
 
