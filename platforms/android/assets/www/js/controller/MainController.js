@@ -36,45 +36,43 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
 
   $scope.enviar = function(index) {
 
-     if($scope.fotos.length == 0) {
-       var alertPopup = $ionicPopup.alert({
-         title: 'Erro',
-         template: 'Tire uma foto Vacilonidus'
-       });
-       return;
-     }
+    if($scope.fotos.length == 0) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Erro',
+        template: 'Tire uma foto Vacilonidus'
+      });
+      return;
+    }
 
-     if($scope.vizualiza.length == 0) {
-       var alertPopup = $ionicPopup.alert({
-         title: 'Erro',
-         template: 'Ao menos uma palavra'
-       });
-       return;
-     }
+    if($scope.vizualiza.length == 0) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Erro',
+        template: 'Ao menos uma palavra'
+      });
+      return;
+    }
 
-     var popup = false;
-     for(var i = 0; i < $scope.vizualiza.length; i++) {
-         var item = $scope.vizualiza[i];
+    var popup = false;
+    for(var i = 0; i < $scope.vizualiza.length; i++) {
+      var item = $scope.vizualiza[i];
 
-         console.log(item);
-         console.log(item.nome);
+      if(item.nome.trim() == '') {
+        popup = true;
+      }
+      if(item.valor.trim() == '') {
+        popup = true;
+      }
+    }
 
-         if(item.nome == '') {
-             console.log('não entrei?')
-             popup = true;
-         }
-         if(item.valor == '') {
-             popup = true;
-         }
-     }
+    if(popup) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Erro',
+        template: 'Nada em branco'
+      });
 
-     if(popup) {
-         var alertPopup = $ionicPopup.alert({
-           title: 'Erro',
-           template: 'Nada em branco'
-         });
-         return;
-     }
+      return;
+
+    }
 
     var listagemScope = Scopes.get('ListagemController')
 
