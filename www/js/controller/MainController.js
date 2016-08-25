@@ -1,7 +1,8 @@
-angular.module('starter').controller('MainController', ['$scope', '$rootScope',  '$location' ,'$q', '$ionicLoading', 'Scopes', function($scope,  $rootScope , $location ,  $q, $ionicLoading, Scopes) {
+angular.module('starter').controller('MainController', ['$scope', '$rootScope',  '$location' ,'$q', '$ionicLoading', 'Scopes', '$ionicPopup',
+ function($scope,  $rootScope , $location ,  $q, $ionicLoading, Scopes, $ionicPopup) {
   Scopes.store('MainController', $scope);
 
-  $scope.vizualiza = [{"valor" : ''}]
+  $scope.vizualiza = [{'nome' : '', 'valor' : ''}]
   $scope.fotos = [];
   $scope.shouldShowDelete = false;
   $scope.shouldShowDeleteImage = false;
@@ -34,6 +35,44 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
   }
 
   $scope.enviar = function(index) {
+
+    if($scope.fotos.length == 0) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Erro',
+        template: 'Tire uma foto Vacilonidus'
+      });
+      return;
+    }
+
+    if($scope.vizualiza.length == 0) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Erro',
+        template: 'Ao menos uma palavra'
+      });
+      return;
+    }
+
+    var popup = false;
+    for(var i = 0; i < $scope.vizualiza.length; i++) {
+      var item = $scope.vizualiza[i];
+
+      if(item.nome.trim() == '') {
+        popup = true;
+      }
+      if(item.valor.trim() == '') {
+        popup = true;
+      }
+    }
+
+    if(popup) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Erro',
+        template: 'Nada em branco'
+      });
+
+      return;
+
+    }
 
     var listagemScope = Scopes.get('ListagemController')
 
@@ -91,6 +130,6 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
 
 
   $scope.adicionaLinha = function() {
-    $scope.vizualiza.unshift({valor : ''});
+    $scope.vizualiza.unshift({'nome' : '', 'valor' : ''});
   };
 }]);

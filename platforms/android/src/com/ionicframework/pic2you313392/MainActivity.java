@@ -22,6 +22,12 @@ package com.ionicframework.pic2you313392;
 import android.os.Bundle;
 import org.apache.cordova.*;
 
+import android.webkit.WebSettings;
+import android.webkit.WebSettings.ZoomDensity;
+
+import android.webkit.WebView;
+import android.webkit.WebSettings;
+
 public class MainActivity extends CordovaActivity
 {
     @Override
@@ -30,5 +36,11 @@ public class MainActivity extends CordovaActivity
         super.onCreate(savedInstanceState);
         // Set by <content src="index.html" /> in config.xml
         loadUrl(launchUrl);
+        WebView webView = (WebView) appView.getEngine().getView();
+        WebSettings settings = webView.getSettings();
+
+        settings.setBuiltInZoomControls(true);
+        settings.setDefaultZoom(WebSettings.ZoomDensity.MEDIUM);
+        settings.setSupportZoom(true);
     }
 }
