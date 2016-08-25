@@ -136,7 +136,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
      imagem.setAttribute('crossOrigin', '');
      ctx.drawImage(imagem, 0, 0, imgWidth, imgHeight);
 
-     ctx.putImageData($scope.contrastImage(ctx.getImageData(0, 0, imgWidth, imgHeight), 100), 0,0);
+     ctx.putImageData($scope.contrastImage(ctx.getImageData(0, 0, imgWidth, imgHeight), 70), 0,0);
      $scope.fotos.push({"src" : c.toDataURL()});
 
 
