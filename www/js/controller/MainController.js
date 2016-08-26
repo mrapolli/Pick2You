@@ -119,8 +119,6 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
 
   $scope.takePicture = function(){
 
-    $scope.showTakePick = false
-
     var options = {
       quality: 25,
       correctOrientation : true,
@@ -135,8 +133,11 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
 
     $scope.cordovaCamera(options).then(function(imageData) {
 
+      $scope.showTakePick = false;
+
       var imagem = new Image();
       imagem.src = "data:image/jpeg;base64," + imageData;
+
 
       var c = document.createElement('canvas');
       var ctx = c.getContext("2d");
@@ -149,9 +150,6 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
 
      ctx.width  = imgWidth;
      ctx.height = imgHeight;
-
-
-     //add ionic alert aki para quer qual que é
 
 
      imagem.setAttribute('crossOrigin', '');
