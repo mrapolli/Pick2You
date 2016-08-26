@@ -153,6 +153,15 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
      imagem.setAttribute('crossOrigin', '');
      ctx.drawImage(imagem, 0, 0, imgWidth, imgHeight);
 
+     var canvas = document.getElementById('imageCanvas');
+     var canvasCtx = canvas.getContext("2d");
+
+     canvas.width = imgWidth;
+     canvas.height = imgHeight;
+
+     canvasCtx.drawImage(imagem, 0, 0, imgWidth, imgHeight);
+     ctx.drawImage(imagem, 0, 0, imgWidth, imgHeight);
+
      ctx.putImageData($scope.contrastImage(ctx.getImageData(0, 0, imgWidth, imgHeight), 70), 0,0);
      $scope.fotos.push({"src" : c.toDataURL("image/jpeg", 0.4)});
 

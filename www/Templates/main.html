@@ -7,17 +7,13 @@
           <div class="container">
             <div>
               <ion-list can-swipe="true">
-                <ion-item ng-repeat="item in fotos">
+
                   <div class="row">
-                    <div align="middle">
-                      <img ng-src="{{item.src}}"  style="width: 300px; height : auto">
+                    <div id="canvasDiv" align="middle">
+                      <canvas id="imageCanvas">
                     </div>
-                    <ion-option-button class="button-positive"
-                          ng-click="fotos.splice($index, 1)">
-                          Delete
-                    </ion-option-button>
                   </div>
-                </ion-item>
+
                 <ion-item ng-if="showTakePick">
                   <div style="text-align: center;">
                     <img ng-src="img/fundo.png" ng-click="takePicture()" style="max-width : 80px; width: auto; height : auto"/>
