@@ -1,10 +1,10 @@
-<ion-view>
+<ion-view ng-controller="MainController">
 <ion-nav-title><div align="middle">Pic2You</div></ion-nav-title>
 
 
   <ion-content>
         <div class="corpo" style="color:white">
-          <div ng-controller="MainController" class="container">
+          <div class="container">
             <div>
               <ion-list can-swipe="true">
                 <ion-item ng-repeat="item in fotos">
@@ -18,7 +18,7 @@
                     </ion-option-button>
                   </div>
                 </ion-item>
-                <ion-item>
+                <ion-item ng-if="showTakePick">
                   <div style="text-align: center;">
                     <img ng-src="img/fundo.png" ng-click="takePicture()" style="max-width : 80px; width: auto; height : auto"/>
                   </div>
@@ -27,9 +27,11 @@
             </div>
             <div>
               <div class="row teste">
-                <div class="col" align="middle">
-                  <div><span>Palavras Chaves</span></div>
-                  <i style="font-size: 20px; float: right; margin-right: 40px; margin-top:5px; z-index: 999" class="ion-plus" ng-click="adicionaLinha()" data-pack="default" data-tags="+"></i>
+                <div class="col">
+                  <span>Palavras Chaves</span>
+                </div>
+                <div style="float: right; margin-top:5px; margin-right:42px">
+                  <i style="font-size: 20px" class="ion-plus" ng-click="adicionaLinha()" data-pack="default" data-tags="+"></i>
                 </div>
               </div>
 
@@ -68,6 +70,9 @@
           </div>
         </div>
 
+
+
+
     </ion-content>
 
     <div class="tabs tabs-icon-left" style="background-color: #f2f2f2;">
@@ -75,7 +80,7 @@
         <i class="icon ion-home" item-left></i>
         Home
       </a>
-      <a  style="color : #527a7a;" class="tab-item" href="#/listagem">
+      <a  style="color : #527a7a;" class="tab-item" ng-click="goGaleria()">
         <i class="icon ion-images" item-right></i>
         Galeria
       </a>

@@ -6,6 +6,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
   $scope.fotos = [];
   $scope.shouldShowDelete = false;
   $scope.shouldShowDeleteImage = false;
+  $scope.showTakePick = true;
 
   $scope.habilitaDeleteImagem = function(){
     $scope.shouldShowDeleteImage = !$scope.shouldShowDeleteImage;
@@ -101,7 +102,25 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
     $ionicLoading.hide();
   }
 
+  $scope.goGaleria = function() {
+
+    var listagemScope = Scopes.get('ListagemController')
+
+    if(!listagemScope.listaFotos) {
+      $ionicPopup.alert({
+        title: 'Erro',
+        template: 'Galeria Vazia jão'
+      });
+      return;
+    }
+    $location.path('/listagem')
+
+  }
+
   $scope.takePicture = function(){
+
+    $scope.showTakePick = false
+
     var options = {
       quality: 50,
       correctOrientation : true,

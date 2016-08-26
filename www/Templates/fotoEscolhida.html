@@ -34,14 +34,14 @@
       </ion-item>
 
 
-        <div class="row teste">
-          <div class="col" align="middle" >
-            <span>Palavras Chaves</span>
-          </div>
-          <div style="float: right; margin-top:5px; margin-right:42px">
-            <i style="font-size: 20px" class="ion-plus" ng-click="adicionaLinha()" data-pack="default" data-tags="+"></i>
-          </div>
+      <div class="row teste">
+        <div class="col" style="color:white;">
+          <span>Palavras Chaves</span>
         </div>
+        <div style="color:white; float: right; margin-top:5px; margin-right:42px">
+          <i style="font-size: 20px" class="ion-plus" ng-click="adicionaLinha()" data-pack="default" data-tags="+"></i>
+        </div>
+      </div>
 
 
       <ion-item ng-repeat="it in vizualizaFotos">
@@ -60,21 +60,15 @@
           Delete
         </ion-option-button>
       </ion-item>
-
     </ion-list>
 
 
 
-    <div class="row item item-button-right">
-      <div class="col-md-4">
-        <button ng-model="button" ng-click="enviar($index)" class="button button-small button-positive">ENVIAR</button>
-      </div>
-    </div>
   </ion-content>
 
 
 
-  <ion-footer-bar class="bar-stable">
+
     <div class="tabs tabs-icon-left">
       <a class="tab-item" ng-click="voltaListagem()">
         <i class="icon ion-home" item-left  ></i>
@@ -86,5 +80,5 @@
         Galeria
       </a>
     </div>
-  </ion-footer-bar>
+
 </ion-view>
