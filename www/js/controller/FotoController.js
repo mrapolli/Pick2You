@@ -11,8 +11,6 @@ angular.module('starter')
   }
 
   $scope.voltaListagem = function() {
-
-    console.log('que merda é essa');
     Scopes.get('MainController').fotos = [];
     Scopes.get('MainController').vizualiza = [{}];
     Scopes.get('MainController').showTakePick = true;
