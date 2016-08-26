@@ -5,16 +5,29 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $ionicPopup) {
   $ionicPlatform.ready(function() {
 
-    console.log("ESTOU PASSANDO POR AKI MEU POVO")
+    console.log("ESTOU PASSANDO POR AKI MEU POVO  ")
 
-    document.addEventListener("backbutton", function() {
-      console.log("Tomara que role");
-    }, false);
+    $ionicPlatform.registerBackButtonAction(function () {
+
+    var confirmPopup = $ionicPopup.confirm({
+        title: 'Saida',
+        template: 'Tem certeza que deseja sair da aplicação?'
+    });
+
+   confirmPopup.then(function(res) {
+     if(res) {
+        navigator.app.exitApp();
+     }
+   });
 
 
+      return false;
+
+
+    }, 100);
 
 
     if(window.cordova && window.cordova.plugins.Keyboard) {
