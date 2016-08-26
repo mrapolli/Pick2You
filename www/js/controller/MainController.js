@@ -154,8 +154,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
      ctx.drawImage(imagem, 0, 0, imgWidth, imgHeight);
 
      ctx.putImageData($scope.contrastImage(ctx.getImageData(0, 0, imgWidth, imgHeight), 70), 0,0);
-     $scope.fotos.push({"src" : c.toDataURL("image/jpeg", 0.5)});
-
+     $scope.fotos.push({"src" : c.toDataURL("image/jpeg", 0.4)});
 
     }, function(err) {
       console.log(err);
