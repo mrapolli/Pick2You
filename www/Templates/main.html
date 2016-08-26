@@ -10,7 +10,7 @@
                 <ion-item ng-repeat="item in fotos">
                   <div class="row">
                     <div align="middle">
-                      <img ng-src="{{item.src}}" style="width: 300px; height : auto">
+                      <img ng-src="{{item.src}}"  style="width: 300px; height : auto">
                     </div>
                     <ion-option-button class="button-positive"
                           ng-click="fotos.splice($index, 1)">
@@ -36,7 +36,7 @@
               </div>
 
               <ion-list can-swipe="true" show-delete="shouldShowDelete">
-                <ion-item ng-repeat="item in vizualiza">                  
+                <ion-item ng-repeat="item in vizualiza">
                   <div class="row">
                     <div class="col-md-8">
                       <input type="text" placeholder="Nome{{$index+1}}" class="form-control" ng-change="search()" ng-model='item.nome'>

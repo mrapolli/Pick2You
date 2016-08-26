@@ -134,10 +134,8 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
     $scope.cordovaCamera(options).then(function(imageData) {
 
       $scope.showTakePick = false;
-
       var imagem = new Image();
       imagem.src = "data:image/jpeg;base64," + imageData;
-
 
       var c = document.createElement('canvas');
       var ctx = c.getContext("2d");
