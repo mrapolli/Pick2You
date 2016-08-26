@@ -4,12 +4,20 @@ angular.module('starter')
   $scope.data={};
   $scope.fotos= FotoEscolhida.get().fotos;
   $scope.vizualizaFotos = FotoEscolhida.get().palavras;
+  Scopes.store('FotoController', $scope, FotoEscolhida, $location);
 
   $scope.adicionaLinha = function() {
     $scope.vizualizaFotos.unshift({valor : ''});
   }
 
-  Scopes.store('FotoController', $scope, FotoEscolhida, $location);
+  $scope.voltaListagem = function() {
+
+    console.log('que merda é essa');
+    Scopes.get('MainController').fotos = [];
+    Scopes.get('MainController').vizualiza = [{}];
+    Scopes.get('MainController').showTakePick = true;
+    $location.path('/main')
+  }
 
   $scope.goImagem = function(img) {
     var viewport = document.querySelector("meta[name=viewport]");

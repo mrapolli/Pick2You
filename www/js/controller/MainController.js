@@ -122,7 +122,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
     $scope.showTakePick = false
 
     var options = {
-      quality: 50,
+      quality: 25,
       correctOrientation : true,
       destinationType: Camera.DestinationType.DATA_URL,
       sourceType: Camera.PictureSourceType.CAMERA,
@@ -138,7 +138,6 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
       var imagem = new Image();
       imagem.src = "data:image/jpeg;base64," + imageData;
 
-      //var c = document.getElementById('myCanvas');
       var c = document.createElement('canvas');
       var ctx = c.getContext("2d");
 
@@ -159,7 +158,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
      ctx.drawImage(imagem, 0, 0, imgWidth, imgHeight);
 
      ctx.putImageData($scope.contrastImage(ctx.getImageData(0, 0, imgWidth, imgHeight), 70), 0,0);
-     $scope.fotos.push({"src" : c.toDataURL()});
+     $scope.fotos.push({"src" : c.toDataURL("image/jpeg", 0.5)});
 
 
     }, function(err) {

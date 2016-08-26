@@ -7,6 +7,16 @@ angular.module('starter', ['ionic'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+
+    console.log("ESTOU PASSANDO POR AKI MEU POVO")
+
+    document.addEventListener("backbutton", function() {
+      console.log("Tomara que role");
+    }, false);
+
+
+
+
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
