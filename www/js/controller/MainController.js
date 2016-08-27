@@ -86,22 +86,6 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
 
   }
 
-
-  $scope.send = function() {
-    $ionicLoading.show({
-      template: 'OK, i got it'
-    })
-
-    setTimeout(function(){
-      $ionicLoading.hide().then(function() {
-      })
-    }, 3000);
-  }
-
-  $scope.testando = function() {
-    $ionicLoading.hide();
-  }
-
   $scope.goGaleria = function() {
 
     var listagemScope = Scopes.get('ListagemController')
@@ -120,7 +104,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
   $scope.takePicture = function(){
 
     var options = {
-      quality: 1,
+      quality: 25,
       correctOrientation : true,
       destinationType: Camera.DestinationType.DATA_URL,
       sourceType: Camera.PictureSourceType.CAMERA,
