@@ -104,7 +104,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
   $scope.takePicture = function(){
 
     var options = {
-      quality: 25,
+      quality: 75,
       correctOrientation : true,
       destinationType: Camera.DestinationType.DATA_URL,
       sourceType: Camera.PictureSourceType.CAMERA,
