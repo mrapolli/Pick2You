@@ -13,6 +13,14 @@ angular.module('starter')
   }
 
   $scope.enviarEscolhada = function(index) {
+
+    var $fotoEscolhidaScope = Scopes.get('FotoController');
+    console.log($fotoEscolhidaScope);
+    if($fotoEscolhidaScope) {
+        $fotoEscolhidaScope.fotos= $scope.listaFotos[index].fotos;
+        $fotoEscolhidaScope.vizualizaFotos = $scope.listaFotos[index].palavras;
+    }
+
     FotoEscolhida.store($scope.listaFotos[index]);
     $location.path('/fotoEscolhida');
   }

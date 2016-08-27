@@ -2,6 +2,7 @@ angular.module('starter').factory('Scopes', function ($rootScope) {
   var mem = {};
   return {
     store: function (key, value) {
+      console.log(key, value);
       mem[key] = value;
     },
 

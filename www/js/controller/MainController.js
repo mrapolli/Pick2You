@@ -120,7 +120,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
   $scope.takePicture = function(){
 
     var options = {
-      quality: 25,
+      quality: 1,
       correctOrientation : true,
       destinationType: Camera.DestinationType.DATA_URL,
       sourceType: Camera.PictureSourceType.CAMERA,
@@ -134,7 +134,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
     $scope.cordovaCamera(options).then(function(imageData) {
 
       $scope.showTakePick = false;
-      var imagem = new Image();
+    /*  var imagem = new Image();
       imagem.src = "data:image/jpeg;base64," + imageData;
 
       var c = document.createElement('canvas');
@@ -153,8 +153,8 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
      imagem.setAttribute('crossOrigin', '');
      ctx.drawImage(imagem, 0, 0, imgWidth, imgHeight);
 
-     ctx.putImageData($scope.contrastImage(ctx.getImageData(0, 0, imgWidth, imgHeight), 70), 0,0);
-     $scope.fotos.push({"src" : c.toDataURL("image/jpeg", 0.4)});
+     ctx.putImageData($scope.contrastImage(ctx.getImageData(0, 0, imgWidth, imgHeight), 70), 0,0);*/
+     $scope.fotos.push({"src" : "data:image/jpeg;base64," + imageData});
 
     }, function(err) {
       console.log(err);
