@@ -57,8 +57,6 @@ angular.module('starter')
      //ctx.putImageData($scope.contrastImage(ctx.getImageData(0, 0, imgWidth, imgHeight), 70), 0,0);
      ctx.putImageData($scope.contrastImage(ctx.getImageData(0, 0, imgWidth, imgHeight), 70), 0,0);
 
-     console.log('abdon',c.toDataURL("image/jpeg", 1))
-
       $http.post('http://192.168.0.10:8081/persist', {'ola' : c.toDataURL("image/jpeg", 0.5)}).then(function() {
         console.log("sucesso");
         $ionicLoading.hide().then(function() {
