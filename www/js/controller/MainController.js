@@ -80,6 +80,7 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
       listagemScope.listaFotos = [];
     }
 
+    console.log('$scope.fotos', $scope.fotos);
     listagemScope.listaFotos.push({palavras : $scope.vizualiza, fotos : $scope.fotos});
     console.log("abacate auzl", listagemScope.vizualizaFotos)
     $location.path("/listagem");
@@ -117,28 +118,41 @@ angular.module('starter').controller('MainController', ['$scope', '$rootScope', 
 
     $scope.cordovaCamera(options).then(function(imageData) {
 
-      $scope.showTakePick = false;
-    /*  var imagem = new Image();
-      imagem.src = "data:image/jpeg;base64," + imageData;
+      $ionicLoading.show({
+        template: 'Enviando sua imagem'
+      }).then(function(){
+        $scope.showTakePick = false;
+        var imagem = new Image();
+        imagem.src = "data:image/jpeg;base64," + imageData;
 
-      var c = document.createElement('canvas');
-      var ctx = c.getContext("2d");
+        var c = document.createElement('canvas');
+        var ctx = c.getContext("2d");
 
-     var imgWidth  = imagem.width;
-     var imgHeight = imagem.height;
+       var imgWidth  = imagem.width;
+       var imgHeight = imagem.height;
 
-     c.width   = imgWidth;
-     c.height  = imgHeight;
+       var newHeight = (300 * imagem.height) / imagem.width;
 
-     ctx.width  = imgWidth;
-     ctx.height = imgHeight;
+       c.width   = 300;
+       c.height  = newHeight;
+
+       ctx.width  = 300;
+       ctx.height = newHeight;
+
+       imagem.setAttribute('crossOrigin', '');
+       //ctx.drawImage(imagem, 0, 0, imgWidth, imgHeight);
+       ctx.drawImage(imagem, 0, 0, 300, newHeight);
+
+       //ctx.putImageData($scope.contrastImage(ctx.getImageData(0, 0, imgWidth, imgHeight), 70), 0,0);
+       ctx.putImageData($scope.contrastImage(ctx.getImageData(0, 0, 300, newHeight), 70), 0,0);
+
+       $scope.fotos.push({"src" : c.toDataURL("image/jpeg", 0.4), 'realImage' : "data:image/jpeg;base64," + imageData});
+       $ionicLoading.hide();
+
+      });
 
 
-     imagem.setAttribute('crossOrigin', '');
-     ctx.drawImage(imagem, 0, 0, imgWidth, imgHeight);
-
-     ctx.putImageData($scope.contrastImage(ctx.getImageData(0, 0, imgWidth, imgHeight), 70), 0,0);*/
-     $scope.fotos.push({"src" : "data:image/jpeg;base64," + imageData});
+     /*$scope.fotos.push({"src" : "data:image/jpeg;base64," + imageData});*/
 
     }, function(err) {
       console.log(err);

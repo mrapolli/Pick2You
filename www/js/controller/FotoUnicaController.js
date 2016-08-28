@@ -6,6 +6,9 @@ angular.module('starter')
   $scope.goHome = function() {
     var viewport = document.querySelector("meta[name=viewport]");
     viewport.setAttribute('content', "initial-scale=1, maximum-scale=4, minimum-scale=0.1, user-scalable=no, width=device-width");
+    Scopes.get('MainController').fotos = [];
+    Scopes.get('MainController').vizualiza = [{}];
+    Scopes.get('MainController').showTakePick = true;
     $location.path('/main')
   }
 

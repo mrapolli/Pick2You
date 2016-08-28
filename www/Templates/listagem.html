@@ -5,14 +5,15 @@
 
   <ion-content>
     <ion-list can-swipe="true" can-swipe="true">
-      <ion-item ng-repeat="item in listaFotos" ng-click="enviarEscolhada($index)">
-        <div ng-repeat="foto in item.fotos">
-          <img ng-src="{{foto.src}}" style="width: 30px; height : auto">
-        </div>
+      <ion-item class="item-thumbnail-left item-text-wrap" ng-repeat="item in listaFotos" ng-click="enviarEscolhada($index)">
+
+          <img ng-src="{{item.fotos[0].src}}">
+
         <ion-option-button class="button-positive" ng-click="listaFotos.splice($index, 1)">
           Delete
         </ion-option-button>
-        Album {{$index+1}}
+        Imagem {{$index+1}}
+        
       </ion-item>
 
 
@@ -20,6 +21,14 @@
           <div class="col-offset-75">
               <button style="background-color: #eeffe6; margin-top:10px; color:#006600; border-color: #006600;font-weight: bold;" ng-model="button" ng-click="enviar()" class="button button-small button-positive">&nbsp;&nbsp;&nbsp;Enviar&nbsp;&nbsp;&nbsp;</button>
           </div>
+      </div>
+
+      <div class="row" style="height : 50px; background-color: #f2f2f2; border-style: solid;">
+
+      </div>
+
+      <div class="row" style="height : 50px; background-color: #f2f2f2; border-style: solid;">
+
       </div>
 
 
