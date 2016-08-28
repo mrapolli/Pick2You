@@ -10,7 +10,7 @@
                 <ion-item ng-repeat="item in fotos">
                   <div class="row">
                     <div align="middle">
-                      <img ng-src="{{item.src}}">
+                      <img ng-src="{{item.src}}" style="max-width : 300px; width: auto; height : auto">
                     </div>
                     <ion-option-button class="button-positive"
                           ng-click="fotos.splice($index, 1)">
